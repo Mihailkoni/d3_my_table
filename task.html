@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <h1>Топ браузеров</h1>
+    
+    <div>
+        <input type="number" id="pr">
+        <button onclick="checkPage()">Фильтровать</button>
+    </div>
+    
+    <table id="browsersTable">
+        <thead>
+            <tr>
+                <th>Браузеры</th>
+                <th>Доля рынка(%)</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script>
+        const data = [
+            { name: "Google Chrome", part: 63.33 },
+            { name: "Apple Safari", part: 13.13 },
+            { name: "Microsoft Edge", part: 10.46 },
+            { name: "Mozilla Firefox", part: 5.96 }
+        ];
+
+        function updateTable(data) {
+            const tbody = d3.select("#browsersTable tbody");
+            
+            tbody.selectAll("tr").remove();
+            
+            const rows = tbody.selectAll("tr")
+                .data(data)
+                .enter()
+                .append("tr");
+            
+            rows.append("td").text(d => d.name);
+            rows.append("td").text(d => d.part);
+        }
+
+        function checkPage() {
+            const pr = parseFloat(document.getElementById("pr").value);
+            
+            if (isNaN(pr)) {
+                alert("введи значение");
+                return;
+            }
+            const filteredData = data.filter(br => br.part >= pr);
+            updateTable(filteredData);
+        }
+        document.addEventListener("DOMContentLoaded", function() {
+            updateTable(data);
+        });
+    </script>
+</body>
+</html>

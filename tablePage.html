@@ -4,10 +4,13 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>Информация о топ-50 российских акциях</title>
-    <script src="JavaScript/table.js"></script>
+    <link rel="stylesheet" type="text/css" href = "CSS/tablePage.css"> 
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="JavaScript/data.js"></script>
     <script src="JavaScript/filter.js"></script>
     <script src="JavaScript/sort.js"></script>
+    <script src="JavaScript/table.js"></script>
+    <script src="JavaScript/chart.js"></script>
 </head>
 
 <body background="images/back.jpg">
@@ -20,34 +23,59 @@
     <hr>
 
     <details>
-      <summary>График</summary>
-  
-      <table cellpadding="5">
-          <tr>
-              <th>Значение по оси OX</th>
-              <th>Результат</th>
-          </tr>
-          <tr>
-              <td>
-                  <input type="radio" name="price"> Цена акции <br>
-                  <input type="radio" name="capital"> Капитализация <br>
-                  <input type="radio" name="p/e"> P/E <br>
-                  <input type="radio" name="p/s"> P/S <br>
-              </td>
-              <td>
-                  <input type="checkbox" name="min"> Минимальное значение <br>
-                  <input type="checkbox" name="max"> Максимальное значение <br>
-                  <input type="checkbox" name="middle"> Среднее значение <br>
-              </td>
-          </tr>
-      </table>
-  
-      <p>
-          <input type="submit" value="Построить">
-      </p>
-      <p>Здесь будет график</p>
-  
-  </details>
+        <summary>График</summary>
+        
+        <div id="graph-controls">
+            <div>
+            <label>Ось X (категория):</label>
+                <select id="x-axis">
+                    <option value="sector">Сектор</option>
+                    <option value="index">Индекс</option>
+                    <option value="price">Цена</option>
+                    <option value="capitalization">Капитализация</option>
+                    <option value="pe">P/E</option>
+                    <option value="ps">P/S</option>
+                </select>
+            </div>
+            
+            <div>
+                <label>Метрика для оси Y:</label>
+                <select id="y-axis">
+                    <option value="price">Цена</option>
+                    <option value="capitalization">Капитализация</option>
+                    <option value="pe">P/E</option>
+                    <option value="ps">P/S</option>
+                    <option value="change">Изменение (%)</option>
+                </select>
+            </div>
+            
+            <div>
+                <label>Тип расчета:</label>
+                <select id="calculation-type">
+                    <option value="average">Среднее</option>
+                    <option value="max">Максимум</option>
+                    <option value="min">Минимум</option>
+                </select>
+            </div>
+            
+            <div>
+                <label>Тип графика:</label>
+                <select id="chart-type">
+                    <option value="bar">Столбчатая</option>
+                    <option value="scatter">Точечная</option>
+                </select>
+            </div>
+            
+            <div>
+                <button id="build-chart">Построить</button>
+                <button id="clear-chart">Очистить</button>
+            </div>
+        </div>
+        
+        <div id="chart-container">
+            <svg id="chart"></svg>
+        </div>
+    </details>
   
   <details>
     <summary>Фильтр</summary>

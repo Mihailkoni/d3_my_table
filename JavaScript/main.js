@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     lvl1.addEventListener('change', updateLevels);
     lvl2.addEventListener('change', updateLevels);
     updateLevels();
+    initChart();
 });
 
 btnFilter.addEventListener('click', function() {

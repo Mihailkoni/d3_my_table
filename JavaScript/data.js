@@ -1,3 +1,5 @@
+let currentStocksList = [];
+
 const stocks = [
     {name: "Газпром", sector: "Энергетика", price: 300, change: 1.2, index: "IMOEX", capitalization: 8000, pe: 4.5, ps: 1.2},
     {name: "Сбербанк", sector: "Финансы", price: 280, change: 0.5, index: "IMOEX", capitalization: 7000, pe: 6.2, ps: 2.0},

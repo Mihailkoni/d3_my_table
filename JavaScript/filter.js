@@ -18,9 +18,9 @@ function getFilteredData(data) {
     data.forEach(item => {
         let flag = true;
         
-        if(values.name && !item.name.toLowerCase().includes(values.name.toLowerCase())) flag = false;
-        if(values.sector && !item.sector.toLowerCase().includes(values.sector.toLowerCase())) flag = false;
-        if(values.index && !item.index.toLowerCase().includes(values.index.toLowerCase())) flag = false;
+        if(values.name && !item.name.toLowerCase().includes(values.name.toLowerCase().trim())) flag = false;
+        if(values.sector && !item.sector.toLowerCase().includes(values.sector.toLowerCase().trim())) flag = false;
+        if(values.index && !item.index.toLowerCase().includes(values.index.toLowerCase().trim())) flag = false;
         if(values.priceFrom && item.price < Number(values.priceFrom)) flag = false;
         if(values.priceTo && item.price > Number(values.priceTo)) flag = false;
         if(values.capFrom && item.capitalization < Number(values.capFrom)) flag = false;

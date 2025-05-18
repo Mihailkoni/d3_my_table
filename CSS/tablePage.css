@@ -1,0 +1,8 @@
+#graph-controls div{
+    margin: 10px;
+}
+
+svg {
+    width: 0px;
+    height: 0px;
+}
